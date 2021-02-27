@@ -1,0 +1,71 @@
+<head>
+  <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+  <h1> Miniproject</h1>
+</head>
+
+<body>
+  <h2><em> change the colour </em></h2>
+  <canvas id="canvas" class="x">
+  </canvas>
+  <canvas id="canvas2" class="y">
+  </canvas>
+  <div>
+    <input type="button" value="change colour" onclick="change()">
+
+    <input type="button" value="reset colour" onclick=changeback()>
+  </div>
+  <br>
+  <div>
+    <h2><em> choose your favourite color </em></h2>
+    <canvas id="canvas3"> </canvas> <br>
+    <input type="color" value="#001A57" id="clr" onchange="docolor()">
+  </div>
+  <br>
+  <h2><em> pull the slider</em></h2>
+  <div><canvas id="canvas4"></canvas>
+    <br>
+    <input type="range" min="10" max="100" value="10" id="slider" oninput="square()">
+  </div>
+  <br>
+  <h2><em> choose a filter </em></h2>
+  <div>
+    <canvas id="canvas6">
+    </canvas>
+    <canvas id="canvas5">
+    </canvas>
+
+    <br>
+    <input type="file" multiple="false" accept="image/*" id="foto" onchange="upload()">
+    <input type="button" value="Reset" onclick="resetimage()">
+    <input type="button" ; value="Clear" onclick="clearcanvas5and6()">
+
+  </div>
+  <br>
+  <div>
+    <input type="button" ; value="Greyscale" id="gs" onclick="greyscale()">
+    <input type="button" value="Red" onclick="makered()">
+    <input type="button" value="Green" onclick="makegreen()">
+    <input type="button" value="Blue" onclick="makeblue()">
+    <input type="button" value="RGB" onclick="makergb()">
+    <input type="button" ; value="Rainbow" id="rb" onclick="rainbow()">
+    <br>
+  </div>
+  <h2><em> use the greenscreen filter </em></h2>
+  <h4> start with the image with a greenscreen background</h4>
+  <div>
+    <canvas id="canvas7"></canvas>
+    <canvas id="canvas8"></canvas>
+
+    <br>
+    <h4> for best results i recommend to use these images: <a href=https://www.dukelearntoprogram.com/course1/example/drewRobert.png> greenscreen image,</a>
+
+      <a href=https://www.dukelearntoprogram.com/course1/example/dinos.png> second image </a> or a greenscreen image with a greenvalue more than 230
+    </h4>
+
+    <input type="file" multiple="false" accept="image/*" id="firstimage" value="upload foreground image" onchange="uploadfirstimage()">
+    <input type="file" multiple="false" accept="image/*" id="secondimage" value="upload background image" onchange="uploadsecondimage()">
+    <input type="button" value="Compose Images" id="compose" onclick="composite()">
+    &nbsp;&nbsp;&nbsp;
+    <input type="button" value="Clear" onclick="clearcanvas7and8()">
+  </div>
+</body>
