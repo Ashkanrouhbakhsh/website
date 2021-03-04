@@ -254,41 +254,40 @@ function makeallrgb() {
   resetimage();
   for (var pixel of image1.values()) {
     if (pixel.getX() < image1.getWidth() / 3) {
-      if (pixel.getGreen() + pixel.getBlue() + pixel.getRed() > 700) {
-        pixel.setRed(255);
-        pixel.setGreen(0);
-        pixel.setBlue(0);
-      }
-
-      if (pixel.getGreen() + pixel.getBlue() > 380) {
-        pixel.setRed(255);
-        pixel.setBlue(pixel.getBlue() / 7);
-        pixel.setGreen(pixel.getGreen() / 7);
-      }
-
-      if (pixel.getGreen() > 200) {
-        pixel.setRed(255);
-        pixel.setGreen(pixel.getGreen() / 6);
-        pixel.setBlue(pixel.getBlue() / 3);
-      }
-
-      if (pixel.getBlue() > 200) {
-        pixel.setRed(255);
-        pixel.setGreen(pixel.getGreen() / 6);
-        pixel.setBlue(pixel.setBlue / 3);
-      } else {
-        var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
-
-        pixel.setRed(255);
-        pixel.setGreen(avg);
-        pixel.setBlue(avg);
-      }
+     if (pixel.getGreen() + pixel.getBlue() + pixel.getRed() > 700) {
+      var rotwert = pixel.getRed();
+      var grünwert = pixel.getGreen();
+      var blauwert = pixel.getBlue();
+      pixel.setRed(255);
+      pixel.setGreen(grünwert / 10);
+      pixel.setBlue(blauwert / 10);
+    }
+    if (pixel.getGreen() > pixel.getBlue() + pixel.getRed()) {
+      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
+      pixel.setRed(255);
+      pixel.setBlue(average);
+      pixel.setGreen(average);
+    }
+    if (pixel.getBlue() > pixel.getGreen() + pixel.getRed()) {
+      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
+      pixel.setRed(255);
+      pixel.setBlue(average);
+      pixel.setGreen(average);
+    } else {
+      var grünwert = pixel.getGreen();
+      var blauwert = pixel.getBlue();
+      pixel.setRed(255);
+      pixel.setGreen(grünwert);
+      pixel.setBlue(blauwert);
+    }
+      
+      
     }
   }
   image1.drawTo(canvas5);
 }
 
-function rainbow() {
+function rainbow() { 
   resetimage();
   for (var pixel of image1.values()) {
     var w = image1.getHeight();
