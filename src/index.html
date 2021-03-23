@@ -1,32 +1,50 @@
-<head>
+are<head>
   <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-  <h1> Miniproject</h1>
 </head>
-
+    <style>
+      body {
+      background-color: black;
+      }
+    </style>
 <body>
-  <h2><em> change the colour </em></h2>
+  <font color=white>
+    <h1> Hello and welcome!</h1><br>
+ <h2> I have created this website to display some of the projects that I have made during the <a href=https://www.coursera.org/learn/duke-programming-web target=_blank>course</a> at <a href=https://de.wikipedia.org/wiki/Coursera target=_blank> Coursera </a>  by the <a href=https://de.wikipedia.org/wiki/Duke_University target=_blank>Duke University</a><br>  about the basics of  HTML, CSS and Javascript. I am going to comment on which new technics I have learned throughout<br> the course  and explain my actions on some of my choices.<br>
+  <br><br> The first HTML-element I worked with was the canvas.<br>I styled the two canvases with CSS and gave them a size, a color and an id.<br>
+    The buttons below run functions which refer to the ids of the canvases and change their colors.<br><br>
+  </h2>
+  <h2><em> change the color </em></h2>
   <canvas id="canvas1" class="x">
   </canvas>
   <canvas id="canvas2" class="y">
   </canvas>
   <div>
-    <input type="button" value="change colour" onclick="change()">
+    <input type="button" value="change color" onclick="change()">
 
-    <input type="button" value="reset colour" onclick=changeback()>
+    <input type="button" value="reset color" onclick=changeback()>
   </div>
   <br>
+  <br>
+  <h2>After that I have learned about colorvalues and how they are defined in a computer.<br>
+    With the color picker you can choose every color a computer is able to display. <br>I even used it to set colorborders for the filters later on.<br><br>
+  </h2>
   <div>
     <h2><em> choose your favourite color </em></h2>
     <canvas id="canvas3"> </canvas> <br>
     <input type="color" value="#001A57" id="clr" onchange="docolor()">
   </div>
   <br>
+  <br>
+  <h2>The next element is the slider. When you pull the slider a yellow rectangle will appear and will grow or shrink<br> depending on which direction you move the slider to.<br>The most important thing I have learned at this stage is how to clear a canvas.<br> Each time you change the size of the rectangle the old one will be deleted and a new one is created.<br> Otherwise the rectangles would be drawn on top of each other and you could only see a difference<br> if you would create a bigger rectangle than before. </h2><br>
   <h2><em> pull the slider</em></h2>
   <div><canvas id="canvas4"></canvas>
-    <br>
+    <br><br>
     <input type="range" min="10" max="100" value="10" id="slider" oninput="square()">
   </div>
   <br>
+  <br>
+  <h2> The first more challenging part from the course was to build this filter function.<br>
+    You can upload an image and choose between the different filters. However the first row of filters handels every image equally.<br> But i was not very satisfied with that because when you wanted to greyscale a white image, nothing changed<br> or when you used a red filter on an image with a green background, the background turned yellow.<br> To solve this problem I created the second row of the filters. I tried out different methods to change the colorvalues the way I wanted them to be.<br> The result is that I set borders for the colortones and depending on how i wanted a filter to work a different function is called. </h2><br><br>
   <h2><em> choose a filter </em></h2>
   <div>
     <canvas id="canvas6">
@@ -56,7 +74,9 @@
     <input type="button" value="Blue 2" onclick="makeallblue()">
     <input type="button" value="RGB 2" onclick= "makeallrgb()">
     <input type="button" value="Rainbow 2" onclick="makeallrainbow()">
-    <br>
+    <br><br>
+    <h2>The last task was to create this filter which merges two images.<br> It scans the colorvalues from each pixel from the first image and if the greenvalue is bigger than the redvalue and the bluevalue<br> combined the program replaces it with a pixel from the second image.
+To make sure that this filter would work as expected<br> I had to set the two images to the same size so that the amount of pixels are identical.</h2><br><br>
   </div>
   <h2><em> use the greenscreen filter </em></h2>
   <h4> start with the greenscreen image</h4>
@@ -65,9 +85,9 @@
     <canvas id="canvas8"></canvas>
 
     <br>
-    <h4> for best results i recommend to use these images: <a href=https://www.dukelearntoprogram.com/course1/example/drewRobert.png> greenscreen image,</a>
+    <h4> for best results I recommend to use these images: <a href=https://www.dukelearntoprogram.com/course1/example/drewRobert.png target=_blank> greenscreen image,</a>
 
-      <a href=https://www.dukelearntoprogram.com/course1/example/dinos.png> second image </a>
+      <a href=https://www.dukelearntoprogram.com/course1/example/dinos.png target=_blank> second image </a>
     </h4>
 
     <input type="file" multiple="false" accept="image/*" id="firstimage" value="upload foreground image" onchange="uploadfirstimage()">
@@ -84,5 +104,10 @@
     &nbsp
 
     <input type="button" value="Clear" id="clearall" onclick="clearcanvas7and8()">
-  </div>
+  </div><br>
+<h2><br><br>
+I hope you had fun trying out the filters!<br>This website will expand the more I learn,so maybe it looks a little bit different the next time you visit it.<br>
+And until then stay happy and healthy :)
+  </h2>
+<br><br><h1>Thank you for your visit and Goodbye!</h1>
 </body>

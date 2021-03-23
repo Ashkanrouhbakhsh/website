@@ -81,22 +81,45 @@ function greyscale() {
   image1.drawTo(canvas5);
 }
 
-function makeallgrey() {
-  resetimage();
+function grey() {
   for (var pixel of image1.values()) {
     var average = (pixel.getGreen() + pixel.getRed() + pixel.getBlue()) / 3;
-    if (pixel.getGreen() + pixel.getBlue() + pixel.getRed() > 600) {
-      var average = average / 2;
-      pixel.setRed(average);
-      pixel.setGreen(average);
-      pixel.setBlue(average);
-    } else {
       pixel.setRed(average);
       pixel.setGreen(average);
       pixel.setBlue(average);
     }
   }
+
+
+function makeallgrey() {
+  resetimage();
+  grey();
+  for (var pixel of image1.values()) {
+if(pixel.getRed()+pixel.getBlue()+pixel.getGreen()>690){
+    pixel.setRed(pixel.getRed()*0.5);
+    pixel.setGreen(pixel.getGreen()*0.5)
+  pixel.setBlue(pixel.getBlue()*0.5);
+  }
+  }
   image1.drawTo(canvas5);
+}
+
+function redmaking() {
+    for (var pixel of image1.values()) {
+   var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
+ if (r+b+g > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(0);
+   pixel.setRed(255);
+   }
+ else{
+   pixel.setGreen(g*0.4 );
+   pixel.setBlue(b*0.4 );
+   pixel.setRed(255);
+ }
+ }
 }
 
 function makered() {
@@ -109,37 +132,9 @@ function makered() {
 
 function makeallred() {
   resetimage();
-
-  for (var pixel of image1.values()) {
-    if (pixel.getGreen() + pixel.getBlue() + pixel.getRed() > 700) {
-      var rotwert = pixel.getRed();
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setRed(255);
-      pixel.setGreen(grünwert / 10);
-      pixel.setBlue(blauwert / 10);
-    }
-    if (pixel.getGreen() > pixel.getBlue() + pixel.getRed()) {
-      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
-      pixel.setRed(255);
-      pixel.setBlue(average);
-      pixel.setGreen(average);
-    }
-    if (pixel.getBlue() > pixel.getGreen() + pixel.getRed()) {
-      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
-      pixel.setRed(255);
-      pixel.setBlue(average);
-      pixel.setGreen(average);
-    } else {
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setRed(255);
-      pixel.setGreen(grünwert);
-      pixel.setBlue(blauwert);
-    }
-  }
-
-  image1.drawTo(canvas5);
+  grey();
+  redmaking();
+  image1.drawTo(canvas5); 
 }
 
 function makegreen() {
@@ -150,39 +145,29 @@ function makegreen() {
   image1.drawTo(canvas5);
 }
 
-function makeallgreen() {
-  resetimage();
-
+function greenmaking(){
   for (var pixel of image1.values()) {
-    if (pixel.getRed() + pixel.getBlue() + pixel.getGreen() > 700) {
-      var rotwert = pixel.getRed();
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setGreen(220);
-      pixel.setRed(rotwert / 10);
-      pixel.setBlue(blauwert / 10);
-    }
+   var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
+ if (r+b+g > 690){
+   pixel.setGreen(140) ;
+   pixel.setBlue(0);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(140);
+   pixel.setBlue(b*0.57 );
+   pixel.setRed(r*0.57);
+ } 
+ }
+}
 
-    if (pixel.getRed() > pixel.getBlue() + pixel.getGreen()) {
-      var average = (pixel.getRed() + pixel.getBlue()) / 8;
-      pixel.setGreen(220);
-      pixel.setBlue(average);
-      pixel.setRed(average);
-    }
-    if (pixel.getBlue() > pixel.getGreen() + pixel.getRed()) {
-      var average = (pixel.getRed() + pixel.getBlue()) / 8;
-      pixel.setGreen(220);
-      pixel.setBlue(average);
-      pixel.setRed(average);
-    } else {
-      var rotwert = pixel.getRed();
-      var blauwert = pixel.getBlue();
-      pixel.setGreen(220);
-      pixel.setRed(rotwert);
-      pixel.setBlue(blauwert);
-    }
-  }
-  image1.drawTo(canvas5);
+function makeallgreen() {
+ resetimage();
+  grey();
+  greenmaking();
+  image1.drawTo(canvas5); 
 }
 
 function makeblue() {
@@ -190,42 +175,32 @@ function makeblue() {
   for (var pixel of image1.values()) {
     pixel.setBlue(255);
   }
+
   image1.drawTo(canvas5);
 }
 
-function makeallblue() {
-  resetimage();
-
-  for (var pixel of image1.values()) {
-    if (pixel.getRed() + pixel.getBlue() + pixel.getGreen() > 700) {
-      var rotwert = pixel.getRed();
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setBlue(255);
-      pixel.setRed(rotwert / 10);
-      pixel.setGreen(grünwert / 10);
-    }
-
-    if (pixel.getGreen() > pixel.getRed() + pixel.getBlue()) {
-      var average = (pixel.getRed() + pixel.getGreen()) / 8;
-      pixel.setBlue(255);
-      pixel.setGreen(average);
-      pixel.setRed(average);
-    }
-    if (pixel.getRed() > pixel.getBlue() + pixel.getGreen()) {
-      var average = (pixel.getRed() + pixel.getGreen()) / 8;
-      pixel.setBlue(255);
-      pixel.setGreen(average);
-      pixel.setRed(average);
-    } else {
-      var rotwert = pixel.getRed();
-      var grünwert = pixel.getGreen();
-      pixel.setBlue(255);
-      pixel.setRed(rotwert);
-      pixel.setGreen(grünwert);
-    }
+function bluemaking(){
+    for (var pixel of image1.values()) {
+   var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
+ if (r+b+g > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(255);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(g*0.44);
+   pixel.setBlue(255 );
+   pixel.setRed(r*0.2);
+ }
   }
-  image1.drawTo(canvas5);
+}
+function makeallblue() {
+   resetimage();
+  grey();
+  bluemaking();
+  image1.drawTo(canvas5); 
 }
 
 function makergb() {
@@ -252,49 +227,66 @@ function makergb() {
 
 function makeallrgb() {
   resetimage();
+  grey();
   for (var pixel of image1.values()) {
+      var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
     if (pixel.getX() < image1.getWidth() / 3) {
-     if (pixel.getGreen() + pixel.getBlue() + pixel.getRed() > 700) {
-      var rotwert = pixel.getRed();
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setRed(255);
-      pixel.setGreen(grünwert / 10);
-      pixel.setBlue(blauwert / 10);
-    }
-    if (pixel.getGreen() > pixel.getBlue() + pixel.getRed()) {
-      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
-      pixel.setRed(255);
-      pixel.setBlue(average);
-      pixel.setGreen(average);
-    }
-    if (pixel.getBlue() > pixel.getGreen() + pixel.getRed()) {
-      var average = (pixel.getGreen() + pixel.getBlue()) / 8;
-      pixel.setRed(255);
-      pixel.setBlue(average);
-      pixel.setGreen(average);
-    } else {
-      var grünwert = pixel.getGreen();
-      var blauwert = pixel.getBlue();
-      pixel.setRed(255);
-      pixel.setGreen(grünwert);
-      pixel.setBlue(blauwert);
-    }
-      
-      
-    }
+ if (r+b+g > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(0);
+   pixel.setRed(255);
+   }
+ else{
+   pixel.setGreen(g*0.4 );
+   pixel.setBlue(b*0.4 );
+   pixel.setRed(255);
+ }
   }
+    if(pixel.getX() > image1.getWidth() / 3 &&
+      pixel.getX() < (2 * image1.getWidth()) / 3){
+ if (r+b+g > 690){
+   pixel.setGreen(140) ;
+   pixel.setBlue(0);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(140);
+   pixel.setBlue(b*0.57 );
+   pixel.setRed(r*0.57);
+ } 
+    }
+    if (
+      pixel.getX() > (2 * image1.getWidth()) / 3 &&
+      pixel.getX() < (3 * image1.getWidth()) / 3
+    ) {
+ if (r+b+g > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(255);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(g*0.44);
+   pixel.setBlue(255 );
+   pixel.setRed(r*0.2);
+ }
+  }
+    }
+  
   image1.drawTo(canvas5);
 }
 
-function rainbow() { 
+function rainbow() {
   resetimage();
   for (var pixel of image1.values()) {
-    var w = image1.getHeight();
-    var x = pixel.getY();
-    var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
-    if (x < w / 7) {
-      //pixel.setRed(200);
+ var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
+    var h = image1.getHeight();
+    var y = pixel.getY();
+    var avg = ((r+g+b)/3);
+    if (y < h / 7) {
       if (avg < 128) {
         pixel.setRed(avg * 2);
         pixel.setGreen(0);
@@ -305,9 +297,7 @@ function rainbow() {
         pixel.setBlue(avg * 2 - 255);
       }
     }
-    if ((x >= w / 7) & (x < (2 * w) / 7)) {
-      //pixel.setRed(200);
-      //pixel.setGreen(100);
+    if ((y >= h / 7) & (y < (2 * h) / 7)) {
       if (avg < 128) {
         pixel.setRed(avg * 2);
         pixel.setGreen(0.8 * avg);
@@ -318,9 +308,7 @@ function rainbow() {
         pixel.setBlue(avg * 2 - 255);
       }
     }
-    if ((x >= (2 * w) / 7) & (x < (3 * w) / 7)) {
-      //pixel.setRed(200);
-      //pixel.setGreen(200);
+    if ((y >= (2 * h) / 7) & (y < (3 * h) / 7)) {
       if (avg < 128) {
         pixel.setRed(avg * 2);
         pixel.setGreen(avg * 2);
@@ -331,8 +319,7 @@ function rainbow() {
         pixel.setBlue(avg * 2 - 255);
       }
     }
-    if ((x >= (3 * w) / 7) & (x < (4 * w) / 7)) {
-      //pixel.setGreen(200);
+    if ((y >= (3 * h) / 7) & (y < (4 * h) / 7)) {
       if (avg < 128) {
         pixel.setRed(0);
         pixel.setGreen(avg * 2);
@@ -343,9 +330,7 @@ function rainbow() {
         pixel.setBlue(avg * 2 - 255);
       }
     }
-    if ((x >= (4 * w) / 7) & (x < (5 * w) / 7)) {
-      //pixel.setGreen(200);
-      //pixel.setBlue(200);
+    if ((y >= (4 * h) / 7) & (y < (5 * h) / 7)) {
       if (avg < 128) {
         pixel.setRed(0);
         pixel.setGreen(0);
@@ -356,8 +341,7 @@ function rainbow() {
         pixel.setBlue(255);
       }
     }
-    if ((x >= (5 * w) / 7) & (x < (6 * w) / 7)) {
-      //pixel.setBlue(200);
+    if ((y >= (5 * h) / 7) & (y < (6 * h) / 7)) {
       if (avg < 128) {
         pixel.setRed(avg * 0.8);
         pixel.setGreen(0);
@@ -368,9 +352,7 @@ function rainbow() {
         pixel.setBlue(255);
       }
     }
-    if (x >= (6 * w) / 7) {
-      //pixel.setRed(100);
-      //pixel.setBlue(200);
+    if (y >= (6 * h) / 7) {
       if (avg < 128) {
         pixel.setRed(avg * 1.6);
         pixel.setGreen(0);
@@ -381,6 +363,132 @@ function rainbow() {
         pixel.setBlue(avg * 0.4 + 153);
       }
     }
+  }
+  image1.drawTo(canvas5);
+}
+
+function makeallrainbow() {
+  resetimage();
+  grey();
+  for (var pixel of image1.values()) {
+   var b = pixel.getBlue();
+   var r =pixel.getRed();
+   var g = pixel.getGreen();
+    var h = image1.getHeight();
+    var y = pixel.getY();
+    var avg =r+g+b;
+    if (y < h / 7) {
+    if (avg > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(0);
+   pixel.setRed(255);
+   }
+ else{
+   pixel.setGreen(g*0.4 );
+   pixel.setBlue(b*0.4 );
+   pixel.setRed(255);
+ }
+}
+    if ((y >= h / 7) & (y < (2 * h) / 7)) {
+    if (avg > 690){
+   pixel.setGreen(90);
+   pixel.setBlue(0);
+   pixel.setRed(255);
+    }
+      else{
+   pixel.setGreen(g*0.66);
+        if(g<90){
+          pixel.setGreen(90);
+        if(g>150){
+            pixel.setGreen(150);
+          }
+        }
+   pixel.setBlue(b*0.22);
+   pixel.setRed(255);
+      }
+      
+    }
+    if ((y >= (2 * h) / 7) & (y < (3 * h) / 7)) {
+     if(avg>690){
+   pixel.setGreen(238);
+   pixel.setBlue(0);
+   pixel.setRed(255);
+     }
+      else{
+   pixel.setBlue(b*0.68);
+   pixel.setRed(255);
+        if(245>g){
+          pixel.setGreen(245);
+        }
+        else{
+          pixel.setGreen(g);
+        }
+      }
+    }
+    if ((y >= (3 * h) / 7) & (y < (4 * h) / 7)) {
+      if (avg > 690){
+   pixel.setGreen(140) ;
+   pixel.setBlue(0);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(140);
+   pixel.setBlue(b*0.57 );
+   pixel.setRed(r*0.57);
+ }   
+    }
+    if ((y >= (4 * h) / 7) & (y < (5 * h) / 7)) {
+       if (avg > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(255);
+   pixel.setRed(0);
+   }
+ else{
+   pixel.setGreen(g*0.44);
+   pixel.setBlue(255 );
+   pixel.setRed(r*0.2);
+ }
+   
+}
+    if ((y >= (5 * h) / 7) & (y < (6 * h) / 7)) {
+         if (avg > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(255);
+   pixel.setRed(40);
+   }
+   else{
+   pixel.setBlue(b*0.63);
+   if(b<140){
+     pixel.setBlue(140);
+   }
+   pixel.setGreen(g*0.1);
+   pixel.setRed(r*0.23);
+     if(r<25){
+       pixel.setRed(25);
+     }
+}
+      }
+    if (y >= (6 * h) / 7) {
+      if (avg > 690){
+   pixel.setGreen(0) ;
+   pixel.setBlue(255);
+   pixel.setRed(140);
+}
+ else{
+   pixel.setGreen(g*0.3);
+   if(g<40){
+     pixel.setGreen(40);
+   }
+pixel.setBlue(255);
+   if(b<150){
+     pixel.setBlue(150);
+   }
+   pixel.setRed(r*0.86)
+   if(r<70){
+     pixel.setRed(70);
+   }
+ }
+  }
   }
   image1.drawTo(canvas5);
 }
