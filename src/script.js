@@ -2,7 +2,7 @@ var image1;
 var image2;
 var image3;
 var image4;
-var canvas5 = document.getElementById("canvas5");
+var canvas5 = document.getElementById("canvas5"); 
 
 function change() {
   var canvas1 = document.getElementById("canvas1");
@@ -85,7 +85,7 @@ function grey() {
   for (var pixel of image1.values()) {
     var average = (pixel.getGreen() + pixel.getRed() + pixel.getBlue()) / 3;
       pixel.setRed(average);
-      pixel.setGreen(average);
+      pixel.setGreen(average); 
       pixel.setBlue(average);
     }
   }
